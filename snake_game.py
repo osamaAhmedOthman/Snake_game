@@ -27,14 +27,14 @@ clock = pygame.time.Clock()
 font = pygame.font.SysFont("arial", 24)
 
 
-background_image = pygame.image.load("resources/background.jpg").convert_alpha()
-background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
+background_image = pygame.Surface((WIDTH, HEIGHT))
+background_image.fill((30, 30, 30))
 
-food_img = pygame.image.load("resources/apple.jpg").convert_alpha()  
-food_img = pygame.transform.scale(food_img, (CELL_SIZE, CELL_SIZE))
+food_img = pygame.Surface((CELL_SIZE, CELL_SIZE), pygame.SRCALPHA)
+pygame.draw.circle(food_img, RED, (CELL_SIZE // 2, CELL_SIZE // 2), CELL_SIZE // 2 - 2)
 
-obstacle_img = pygame.image.load("resources/Untitled.jpg").convert_alpha()  
-obstacle_img = pygame.transform.scale(obstacle_img, (CELL_SIZE, CELL_SIZE))
+obstacle_img = pygame.Surface((CELL_SIZE, CELL_SIZE), pygame.SRCALPHA)
+pygame.draw.rect(obstacle_img, GRAY, (2, 2, CELL_SIZE - 4, CELL_SIZE - 4))
 
 snake = [(COLS // 1.75, ROWS // 2)]
 score = 0
